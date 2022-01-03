@@ -3,7 +3,7 @@
  * This is the core application of the project
  */
 
-const { shell, app } = require("@electron/remote");    
+const { shell, app, dialog } = require("@electron/remote");    
 
 
 //This is where you can customize the name and helplink of the installer
@@ -55,4 +55,20 @@ function checkboxClicked(checkboxID, callback) {
     }
    
     
+}
+/**
+ * @returns {String} Directory path
+ */
+function openInstallFolderDialog() {
+    dialog.showOpenDialog({ properties: ['openFile', 'openDirectory'] }).then(result => {
+        if(!result.canceled) {
+            console.log(result);
+            return result[0];
+        } else {
+            alert("No fvaild entry provided. Using default folder");
+        }
+    }).catch(err => {
+        console.log(err);
+    })
+
 }
