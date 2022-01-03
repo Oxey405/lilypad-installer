@@ -1,0 +1,33 @@
+{
+  "name": "lilypad-installer",
+  "version": "1.0.0",
+  "description": "Lilypad is a universal installer for linux. Use lilypad to provide a beautiful installer for your linux app.",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oxey405/lilypad-installer.git"
+  },
+  "keywords": [
+    "installer",
+    "linux",
+    "lilypad",
+    "debian",
+    "application",
+    "tool",
+    "utility"
+  ],
+  "author": "Oxey405",
+  "license": "Mozilla Public License 2.0",
+  "bugs": {
+    "url": "https://github.com/Oxey405/lilypad-installer/issues"
+  },
+  "homepage": "https://github.com/Oxey405/lilypad-installer#readme",
+  "dependencies": {
+    "@electron/remote": "^2.0.1",
+    "electron": "^16.0.5",
+    "sudo-prompt": "^9.2.1"
+  }
+}

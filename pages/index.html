@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Install application</title>
+</head>
+<body>
+    <div class="framebar">
+        <p id="installWindowTitle">Install ${AppName}</p>
+        <div style="display: block;">
+            <button onclick="openHelpURL()" class="framebutton helpbutton">?</button>
+            <button onclick="quitApp()" class="framebutton exitbutton">✖</button>
+        </div>
+
+        
+
+    </div>
+    <h1 class="install" id="installtitle">Install ${AppName}</h1>
+    <p id="Description">${Description message}</p>
+    <center>
+        <fieldset class="instsets">
+            <legend>Installation options</legend>
+            <div class="setcontainer">
+                <div state="checked" onclick="checkboxClicked('chk01')" class="checkbox-checked" id="chk01"></div>
+                <span for="chk01">Add a shortcut on the activities tab</span>
+            </div>
+            
+            <div class="setcontainer">
+                <div state="unchecked" onclick="checkboxClicked('chk02')" class="checkbox-unchecked" id="chk02"></div>
+                <span for="chk02">Use custom installation folder</span>
+                <input type="text" class="folder">
+            </div>
+            
+        </fieldset>
+    </center>
+    <script src="application.js"></script>
+
+</body>
+</html>
