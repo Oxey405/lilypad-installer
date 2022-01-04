@@ -31,11 +31,16 @@
             <div class="setcontainer">
                 <div state="unchecked" onclick="checkboxClicked('chk02')" class="checkbox-unchecked" id="chk02"></div>
                 <span for="chk02">Use custom installation folder</span>
-                <input type="text" class="folder">
-                <button onclick="selectFolder()">select folder</button>
+                <input id="installfolder" type="text" class="folder">
+                <button onclick="selectFolder()">📁</button>
             </div>
-            
+            <div class="setcontainer">
+                <div state="unchecked" onclick="checkboxClicked('chk03')" class="checkbox-unchecked" id="chk03"></div>
+                <span for="chk01">(Re)Download software from git source if provided.</span>
+            </div>
         </fieldset>
+        <button onclick="install()" class="installbtn">Start install procedure</button>
+        <p id="state">what's happening ?</p>
     </center>
     <script src="application.js"></script>
 

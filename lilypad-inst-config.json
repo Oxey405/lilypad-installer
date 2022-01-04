@@ -1,0 +1,10 @@
+{
+  "devtools": "true",
+  "mode": "bundled",
+  "AppName": "examplename",
+  "helpLink": "https://github.com/Oxey405/lilypad-installer",
+  "windowTitle": "Install App",
+  "description": "Install the app and customize the installation",
+  "appSourcesRepoYML": "https://github.com/4ian/GDevelop/releases/latest/download/latest-linux.yml",
+  "appSourcesRepo": "https://github.com/4ian/GDevelop"
+}

@@ -4,7 +4,8 @@
   "description": "Lilypad is a universal installer for linux. Use lilypad to provide a beautiful installer for your linux app.",
   "main": "index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,23 @@
   "homepage": "https://github.com/Oxey405/lilypad-installer#readme",
   "dependencies": {
     "@electron/remote": "^2.0.1",
-    "electron": "^16.0.5",
+    "electron-dl": "^3.3.0",
+    "js-yaml": "^4.1.0",
     "sudo-prompt": "^9.2.1"
+  },
+  "devDependencies": {
+    "electron": "^16.0.5",
+    "electron-builder": "^22.14.5"
+  },
+  "build": {
+    "appId": "com.oxey405.lilypadinstaller",
+    "productName": "Lilypad Installer",
+    "linux": {
+      "target": "AppImage",
+      "icon": "res/lilypad_inst_logo_256.png",
+      "synopsis": "A lightweight installer for applications. Create .desktop files and automate most of the boring part.",
+      "category": "utility",
+      "description": "A lightweight installer for applications. Create .desktop files and automate most of the boring part. This can be used for lambda users or can be bundled as an installer for your own application."
+    }
   }
 }

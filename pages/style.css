@@ -8,9 +8,20 @@ body {
 }
 @media (prefers-color-scheme: dark) {
     body { background: #141414; color: white; }
+    input[type="text"], textarea {
+
+        background-color : #d1d1d1; 
+      
+      }
 }
-@media (prefers-color-scheme: white) {
-    body { background: #b6b6b6; color: black; }
+@media (prefers-color-scheme: light) {
+    body { background: #ffffff; color: black; }
+    input[type="text"], textarea {
+
+        background-color : #adadad; 
+      
+      }
+
 }
 
   .framebar {
@@ -103,4 +114,14 @@ span {
     margin-left: 3vw;
     width: 38vw;
     height: 4vh;
+}
+.installbtn {
+    width: 50vw;
+    height: 6vh;
+    border-radius: 30px;
+    background-color: dodgerblue;
+    color:white;
+    border:none;
+    margin-top: 10vw;
+    font-size: 4vw;
 }
