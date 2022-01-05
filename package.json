@@ -4,9 +4,11 @@
   "description": "Lilypad is a universal installer for linux. Use lilypad to provide a beautiful installer for your linux app.",
   "main": "index.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electron-forge start",
     "build:x64": "electron-builder --x64",
-    "build:x32": "electron-builder --ia32"
+    "build:x32": "electron-builder --ia32",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "repository": {
     "type": "git",
@@ -30,22 +32,65 @@
   "dependencies": {
     "@electron/remote": "^2.0.1",
     "electron-dl": "^3.3.0",
+    "electron-squirrel-startup": "^1.0.0",
     "js-yaml": "^4.1.0",
     "sudo-prompt": "^9.2.1"
   },
   "devDependencies": {
-    "electron": "^16.0.5",
-    "electron-builder": "^22.14.5"
+    "@electron-forge/cli": "^6.0.0-beta.61",
+    "@electron-forge/maker-deb": "^6.0.0-beta.61",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.61",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
+    "@electron-forge/maker-zip": "^6.0.0-beta.61",
+    "electron": "^16.0.5"
   },
   "build": {
     "appId": "com.oxey405.lilypadinstaller",
     "productName": "Lilypad Installer",
     "linux": {
-      "target": ["AppImage","zip"],
+      "target": [
+        "AppImage",
+        "zip"
+      ],
       "icon": "res/lilypad_inst_logo_256.png",
       "synopsis": "A lightweight installer for applications. Create .desktop files and automate most of the boring part.",
       "category": "utility",
       "description": "A lightweight installer for applications. Create .desktop files and automate most of the boring part. This can be used for lambda users or can be bundled as an installer for your own application."
     }
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "protocols": [
+          {
+            "name": "Lilypad Installer",
+            "schemes": ["install-w-lilypad"]
+          }
+        ],
+        "icon":"res/lilypad_inst_logo_256.png"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "mimeType": ["x-scheme-handler/install-w-lilypad"]
+          }
+        }
+      ]
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "options": {
+              "maintainer": "Oxey405",
+              "homepage": "https://oxey405.com/projects/lilypad"
+            },
+            "icon":"res/lilypad_inst_logo_256.png"
+          }
+        }
+      
+      ]
+    }
   }
-}
+

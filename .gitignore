@@ -4,3 +4,4 @@ dist/
 app.log
 main.log
 package-lock.json
+out/

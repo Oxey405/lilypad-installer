@@ -287,3 +287,7 @@ function wipetmpdir() {
 
   })
 }
+//What to do when app is accessed from install-w-lilypad://
+ipcRenderer.on('open-from-url', (event, url) => {
+  alert("Getting app from " + url);
+});
