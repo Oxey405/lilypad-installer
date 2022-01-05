@@ -5,6 +5,7 @@
  * directly in your app credits. It would be great :)
  * See https://oxey405.com/projects/lilypad-inst
  */
+
 const { shell, app, dialog, BrowserWindow } = require("@electron/remote");
 const { ipcRenderer } = require("electron");
 const actualWindow = BrowserWindow.getFocusedWindow();
@@ -16,10 +17,21 @@ const sudo = require("sudo-prompt");
 var state = document.getElementById("state");
 var sudo_options = {
   name: 'Lilypad Installer',
-  icns: 'res/lilypad_inst_logo_256?png', // (optional)
+  icns: 'res/lilypad_inst_logo_256.png', // (optional)
 }; 
 
-const pathToLogStack = app.getAppPath() + "/app.log";
+const pathToLogStack = os.homedir() + "/.lilypad/app.log";
+const PathToLogDir = os.homedir() + "/.lilypad";
+//creates log dir in inexisting
+if(!fs.existsSync(PathToLogDir)) {
+  try {
+    fs.mkdirSync(PathToLogDir);
+
+  } catch (error) {
+    alert("critical ERROR : can't create logs !!! Hard stopping! \r\n" + error);
+    app.exit();
+  }
+}
 var logStack = "beginning of app logger - timestamp : " + Date.now();
 fs.readFile(pathToLogStack, "utf-8", function (err, data) {
   logStack = data;
@@ -40,6 +52,7 @@ var PathToApp ;
  * It sets a lot of useful variables and properties
  */
 function setup() {
+  
 
   log("Initializing webapp : loaded modules");
 
@@ -184,7 +197,8 @@ function log(messageToLog) {
   fs.writeFile(pathToLogStack, logStack, "utf-8", (err) => {
     if (err) {
       //Wait, how did the user got to this point ?!
-      console.error("!! CANT WRITE main.logs : THIS IS REALLY BAD !!");
+      console.error("!! CANT WRITE app.log : THIS IS REALLY BAD !!");
+      console.error("ERROR : " + err);
     }
   });
 
@@ -240,7 +254,7 @@ function downloadLinuxExec() {
 });
 }
 function copyExecToAppPath(fileToCopy) {
-  var commandToPerform = 'cp ' + fileToCopy + ' ' + PathToApp + "/";
+  var commandToPerform = 'mkdir ' + PathToApp + '&& cp ' + fileToCopy + ' ' + PathToApp + "/";
   log("trying to perform command : " + commandToPerform);
   state.innerHTML = "Performing copy command from tmp to " + PathToApp;
   sudo.exec(commandToPerform, sudo_options,

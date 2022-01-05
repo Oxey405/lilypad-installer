@@ -1,11 +1,12 @@
 {
   "name": "lilypad-installer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lilypad is a universal installer for linux. Use lilypad to provide a beautiful installer for your linux app.",
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder"
+    "build:x64": "electron-builder --x64",
+    "build:x32": "electron-builder --ia32"
   },
   "repository": {
     "type": "git",
@@ -40,7 +41,7 @@
     "appId": "com.oxey405.lilypadinstaller",
     "productName": "Lilypad Installer",
     "linux": {
-      "target": "AppImage",
+      "target": ["AppImage","zip"],
       "icon": "res/lilypad_inst_logo_256.png",
       "synopsis": "A lightweight installer for applications. Create .desktop files and automate most of the boring part.",
       "category": "utility",
